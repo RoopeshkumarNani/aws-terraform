@@ -33,7 +33,9 @@ output "creation_date"{
     value=data.aws_ami.amazon_linux.creation_date
 }
 
-
+output "instance_id" {
+    value=aws_instance.ec2_instance.id
+}
 # Creating  the resource
 
 resource "aws_instance" "ec2_instance" {
