@@ -36,9 +36,23 @@ Region: ap-southeast-1
 - Attached the EBS volume to the EC2 instance
 - Verified volume attachment in AWS Console and AWS CLI
 
+### Lab 3: Multi-Region (Singapore -> Sydney)
+- Added a second AWS provider alias for `ap-southeast-2` (Sydney)
+- Created a second EC2 instance in Sydney with its own key pair and security group
+- Created an EBS snapshot in Singapore and copied it to Sydney
+- Provisioned a new EBS volume in Sydney from the copied snapshot
+- Attached the Sydney volume to the Sydney EC2 instance
+- Practiced troubleshooting Terraform variable input issues (snapshot ID formatting)
+
 ## Commands Practice
 Using professional Terraform flow:
 - `terraform plan -out tfplan`
 - `terraform apply tfplan`
 - `terraform plan -destroy -out destroy.tfplan`
 - `terraform apply destroy.tfplan`
+
+## Multi-Region Notes
+- Source region: `ap-southeast-1` (Singapore)
+- Destination region: `ap-southeast-2` (Sydney)
+- Keep Terraform as the source of truth for create/update/destroy
+- Use AWS CLI for operational checks and start/stop actions
