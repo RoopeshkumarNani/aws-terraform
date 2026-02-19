@@ -77,3 +77,19 @@ resource "aws_security_group" "ssh_sg" {
 
 }
 
+resource "aws_ebs_volume" "extra_volume"{
+    availability_zone = aws_instance.ec2_instance.availability_zone
+    size = 8
+    type = "gp2"
+    encrypted=true
+    
+    tags={
+        Name="terraform-demo-extra-ebs"
+    }
+}
+
+resource "aws_volume_attachment" "extra_volume_attach" {
+    device_name="/dev/sdf"
+    volume_id= aws_ebs_volume.extra_volume.id
+    instance_id=aws_instance.ec2_instance.id
+}
