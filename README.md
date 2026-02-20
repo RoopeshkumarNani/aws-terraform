@@ -7,6 +7,9 @@ Provision an EC2 instance on AWS using Terraform.
 - Terraform
 - AWS CLI
 - AWS EC2, Security Group, Key Pair
+- AWS EBS (extra volume + attachment)
+- AWS EFS (file system + mount target)
+- AWS FSx for Lustre
 
 ## Files
 - main.tf
@@ -43,6 +46,12 @@ Region: ap-southeast-1
 - Provisioned a new EBS volume in Sydney from the copied snapshot
 - Attached the Sydney volume to the Sydney EC2 instance
 - Practiced troubleshooting Terraform variable input issues (snapshot ID formatting)
+
+### Lab 4: EFS and FSx (Storage Services)
+- Added EFS file system and mount target in the EC2 subnet
+- Added EFS security group rule for NFS (`2049`) from the EC2 security group
+- Added FSx for Lustre resource and dedicated FSx security group
+- Added outputs for EFS ID and FSx DNS/mount name
 
 ## Commands Practice
 Using professional Terraform flow:
